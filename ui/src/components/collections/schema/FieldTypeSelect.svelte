@@ -14,6 +14,11 @@
             icon: CommonHelper.getFieldTypeIcon("text"),
         },
         {
+            label: "Markdown",
+            value: "md",
+            icon: CommonHelper.getFieldTypeIcon("md"),
+        },
+        {
             label: "Number",
             value: "number",
             icon: CommonHelper.getFieldTypeIcon("number"),
@@ -61,9 +66,4 @@
     ];
 </script>
 
-<ObjectSelect
-    class="field-type-select {classes}"
-    items={types}
-    bind:keyOfSelected={value}
-    {...$$restProps}
-/>
+<ObjectSelect class="field-type-select {classes}" items={types} bind:keyOfSelected={value} {...$$restProps} />

@@ -22,6 +22,7 @@
     import FileField from "@/components/records/fields/FileField.svelte";
     import RelationField from "@/components/records/fields/RelationField.svelte";
     import ExternalAuthsList from "@/components/records/ExternalAuthsList.svelte";
+    import MdField from "@/components/records/fields/MdField.svelte";
 
     const dispatch = createEventDispatcher();
 
@@ -342,6 +343,8 @@
             {#each collection?.schema || [] as field (field.name)}
                 {#if field.type === "text"}
                     <TextField {field} bind:value={record[field.name]} />
+                {:else if field.type === "md"}
+                    <MdField {field} bind:value={record[field.name]} />
                 {:else if field.type === "number"}
                     <NumberField {field} bind:value={record[field.name]} />
                 {:else if field.type === "bool"}

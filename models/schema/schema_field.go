@@ -82,6 +82,7 @@ func AuthFieldNames() []string {
 // All valid field types
 const (
 	FieldTypeText     string = "text"
+	FieldTypeMd       string = "md"
 	FieldTypeNumber   string = "number"
 	FieldTypeBool     string = "bool"
 	FieldTypeEmail    string = "email"
@@ -100,6 +101,7 @@ const (
 func FieldTypes() []string {
 	return []string{
 		FieldTypeText,
+		FieldTypeMd,
 		FieldTypeNumber,
 		FieldTypeBool,
 		FieldTypeEmail,
@@ -230,6 +232,8 @@ func (f *SchemaField) InitOptions() error {
 	switch f.Type {
 	case FieldTypeText:
 		options = &TextOptions{}
+	case FieldTypeMd:
+		options = &MdOptions{}
 	case FieldTypeNumber:
 		options = &NumberOptions{}
 	case FieldTypeBool:
@@ -404,6 +408,14 @@ func (o *TextOptions) checkRegex(value any) error {
 	return nil
 }
 
+type MdOptions struct {
+}
+
+func (o MdOptions) Validate() error {
+	return nil
+}
+
+// -------------------------------------------------------------------
 // -------------------------------------------------------------------
 
 type NumberOptions struct {
